@@ -1,0 +1,46 @@
+Copyright (C) 2015 Lawrence Livermore National Security, LLC.
+Produced at Lawrence Livermore National Laboratory.
+Packaged by Tim Meier meier3@llnl.gov
+LLNL-CODE-673346 All rights reserved.
+
+This project was registered on SourceForge.net on Oct 17, 2001, and is
+described by the project team as follows:
+
+The Java Curses Library (JCurses) is a library for developing text terminal
+based applications using Java programming language. It is implemented as a
+Windowing toolkit similar to AWT, but built upon the UNIX "curses" windowing
+system.
+
+Additional information can be found on SourceForge or the projects website;
+
+http://javacurses.sourceforge.net/
+
+This project was simply repackaged to conform to the needs of LLNS, and is
+distributed WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+A. This notice is required to be provided under our contract with the U.S.
+Department of Energy (DOE). This work was produced at the Lawrence Livermore
+National Laboratory under Contract No. DE-AC52-07NA27344 with the DOE.
+
+B. Neither the United States Government nor Lawrence Livermore National
+Security, LLC nor any of their employees, makes any warranty, express or
+implied, or assumes any liability or responsibility for the accuracy,
+completeness, or usefulness of any information, apparatus, product, or process
+disclosed, or represents that its use would not infringe privately-owned
+rights.
+
+C. Also, reference herein to any specific commercial products, process, or
+services by trade name, trademark, manufacturer or otherwise does not
+necessarily constitute or imply its endorsement, recommendation, or favoring by
+the United States Government or Lawrence Livermore National Security, LLC. The
+views and opinions of authors expressed herein do not necessarily state or
+reflect those of the United States Government or Lawrence Livermore National
+Security, LLC, and shall not be used for advertising or product endorsement
+purposes.
