@@ -17,6 +17,29 @@ repositories {
     jcenter()
 }
 
+task makeDistro() << {
+    def subdir = new File(project.buildDir, "distributions")
+    println("subdir: "+ subdir)
+
+    if( !subdir.exists() ) {
+        println("creating subdir")
+
+        if(subdir.mkdirs()) {
+            println("succeeded in making folder")
+
+            if(subdir.exists()) {
+                println("folder exists")
+            } else {
+                println("folder does not exist")
+            }
+        } else {
+            println("failed to make folder")
+        }
+    } else {
+        println("folder exists already")
+    }
+}
+
 task incrementBuildNumber  {
   description 'increment the artifactBuildNumber in the gradle.properties file, and update the version accordingly'
   version = artifactMajorVersion + "-" + artifactReleaseNumber + "-b" + artifactBuildNumber
@@ -35,9 +58,27 @@ incrementBuildNumber  << {
   version = artifactMajorVersion + "-" + artifactReleaseNumber + "-b" + nextbuildnum.toString()
 }
 
+task renameJar {
+ description 'copies and renames the jar file to the simple form in the distributions directory (needed for ldapotp-java-api)'  
+}
+
+renameJar << {
+   String fname1 = "${rootProject.name}" + "-" + version + ".jar"
+   String fname2 = "${rootProject.name}" + ".jar"
+   String fromString = "${rootProject.libsDir}" + "/" +  fname1
+   String toString = "${rootProject.distsDir}"
+   println "Copying from: " + fromString + ", to: " + toString
+   copy {
+   from fromString
+   into toString
+   rename(fname1, fname2)
+   }
+}
+
 // on every jar task, increment the build number, and fill in the manifest
 jar {
   dependsOn incrementBuildNumber
+  dependsOn makeDistro
     doFirst {
         manifest {
               attributes('Gradle-Version':  gradle.gradleVersion,
@@ -51,6 +92,10 @@ jar {
               "Bundle-Description" : "${bundleDescription}",
                 "Built-Date" : new Date())               
         }
+    }
+    doLast {
+      println "2. Renaming now, from ${rootProject.name}" + "-" + version + ".jar to ${rootProject.name}" + ".jar"
+      renameJar
     }
 }
 
